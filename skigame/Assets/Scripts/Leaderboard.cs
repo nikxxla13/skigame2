@@ -15,6 +15,8 @@ public class Leaderboard : MonoBehaviour
         {
             bestTimes.Add(PlayerPrefs.GetFloat("time"+i, 99999));
         }
+         UpdateLeaderboardUI();
+
     }
     // Start is called before the first frame update
     public void AddTime(float time)
