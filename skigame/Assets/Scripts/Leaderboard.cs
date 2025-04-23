@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
     [SerializeField] private List <float> bestTimes = new();
+    [SerializeField] private TextMeshProUGUI leaderboardText; 
 
     private void Awake()
     {
@@ -32,4 +34,14 @@ public class Leaderboard : MonoBehaviour
        
         PlayerPrefs.Save();
     }
+
+    private void UpdateLeaderboardUI()
+        {
+            leaderboardText.text = "Best Times:\n";
+            for (int i = 0; i < Mathf.Min(5, bestTimes.Count); i++)
+            {
+                leaderboardText.text += $"{i + 1}. {bestTimes[i]:F2} sec\n";
+            }
+        }
+
 }
